@@ -14,7 +14,7 @@ Coding Standard: eslint-config-airbnb
 
 Styles: tailwindcss and css modules
 
-State management: Redux / [react-redux](httos://react-redux.js.org) / [Redux Toolkit](https://redux-toolkit.js.org/) ( modern approach)
+State management: Redux / [react-redux](https://react-redux.js.org/) / [Redux Toolkit](https://redux-toolkit.js.org/) ( modern approach)
 
 Charts library: Recharts
 
