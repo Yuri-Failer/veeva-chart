@@ -2,32 +2,24 @@ import {
   Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts';
 import { useSelector } from 'react-redux';
-import { getSortedData } from './utils';
+import { getPreparedRechartsData, getSortedData } from './utils';
 
 export default function StackedChart() {
   // 1. Get data.
   const rawData = useSelector((state) => state.chart.data);
+  const colors = ['#00487b', '#5e98cf', '#494D8E', '#D74C7E', '#AF4B90', '#EB5C44', '#F6971C', '#FC7544'];
   // 2. Sort data
   const sortedData = getSortedData(rawData);
-
   // 3. Prepare data for recharts.
-  const rechartsData = [];
-  const grossData = {};
-  const colors = ['#00487b', '#5e98cf', '#494D8E', '#D74C7E', '#AF4B90', '#EB5C44', '#F6971C', '#FC7544'];
-  sortedData.forEach((item) => {
-    grossData[item.name] = item.value;
-  });
-  grossData.name = 'Total Gross NBRx';
-  rechartsData.push(grossData);
+  const rechartsData = getPreparedRechartsData(sortedData, 'Total Gross NBRx');
   return (
-    <ResponsiveContainer height={50} width="100%">
+    <ResponsiveContainer height={40} width="100%">
       <BarChart
         width={900}
         height={550}
         layout="vertical"
         data={rechartsData}
         stackOffset="expand"
-        className="ddd"
       >
         <XAxis hide type="number" />
         <YAxis hide dataKey="name" type="category" />

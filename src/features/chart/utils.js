@@ -9,7 +9,17 @@ export function formatNumber(num) {
       : Math.abs(Number(num));
 }
 
-// Returns new array (no mutating data).
+// Desc sort. Returns new array (no mutating data).
 export function getSortedData(data) {
+  // Can be improved with additional params like ASC/DESC order and sorting by key.
   return [...data].sort((a, b) => parseInt(b.value, 10) - parseInt(a.value, 10));
+}
+
+export function getPreparedRechartsData(data, chartName) {
+  // Can be more generic by requirements.
+  const chartData = { name: chartName };
+  data.forEach((item) => {
+    chartData[item.name] = item.value;
+  });
+  return Array(chartData);
 }

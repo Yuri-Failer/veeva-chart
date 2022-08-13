@@ -14,7 +14,10 @@ export default function Chart() {
       {stackedChart
         ? <StackedChart />
         : <BarGraph />}
-      <button type="button" className="" onClick={() => dispatch(toggleChart())}> Toggle Chart</button>
+      <button type="button" className="bg-blue-300 p-2 rounded-lg" onClick={() => dispatch(toggleChart())}>{
+          stackedChart ? 'Regular Bar Chart' : 'Stacked Bar Chart'
+      }
+      </button>
     </>
   );
 }
